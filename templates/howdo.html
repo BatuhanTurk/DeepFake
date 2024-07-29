@@ -1,0 +1,205 @@
+{% extends 'mainPage.html' %}
+{% block content %}
+<div class="homepage-div">
+    <div class="container">
+        <br>
+        <h1>
+            Nasıl Yapıldı ?
+        </h1>
+        <br>
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Veri seti ihtiyacım nedeniyle Kaggle platformunu kullanmam gerekiyordu. Kaggle, makine öğrenimi ve
+                    veri bilimi projeleri için çeşitli veri setleri sunan geniş bir platformdur. Bu platformda veri
+                    setlerini araştırırken, özellikle ilgimi çeken bir veri seti buldum: Deepfake Detection Challenge
+                    veri seti.</h4>
+            </div>
+            <div class="col-sm-4">
+                <img class="navbar-logo" src="{{ url_for('static', filename='images/kaggle_logo.png') }}" alt="Logo">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="navbar-logo content-image"
+                    src="{{ url_for('static', filename='images/deepfakechallenge.png') }}" alt="Logo">
+            </div>
+
+            <div class="col-sm-8">
+                <h2>
+                    Deepfake Detection Challenge Veri Seti
+                </h2>
+                <h4>
+                    Deepfake Detection Challenge (DFDC) veri seti, yapay zeka ve makine öğrenimi araştırmacıları
+                    tarafından sahte (deepfake) videoları tespit etmek için kullanılan büyük ve kapsamlı bir veri
+                    setidir. Bu veri seti, Meta (eski adıyla Facebook) tarafından oluşturulmuş ve paylaşıma sunulmuştur.
+                    DFDC veri seti, çeşitli zorluk seviyelerinde sahte videoları içerir ve gerçek videolarla
+                    karşılaştırma yaparak model eğitimi için ideal bir kaynak sağlar.
+                </h4>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>Veri Seti İçeriği:</h5>
+                <table class="table table-sm" style="height: 300px; ">
+                    <tbody>
+                        <tr>
+                            <td class="table-info">Gerçek Videolar</td>
+                            <td class="table-info">Gerçek Videolar: Çeşitli kişilerin konuşmalarını ve hareketlerini
+                                içeren videolar.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Sahte Videolar</td>
+                            <td class="table-info">Gerçek videolardan üretilmiş ve yüz değiştirme (face-swapping)
+                                teknolojileri kullanılarak oluşturulmuş sahte videolar.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Eğitim, Doğrulama ve Test Kümeleri</td>
+                            <td class="table-info">Model eğitimi, doğrulama ve test süreçlerinde kullanılmak üzere
+                                ayrılmış veri kümeleri.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Meta Veriler</td>
+                            <td class="table-info">Videolar hakkında ayrıntılı bilgiler, örneğin hangi videoların sahte
+                                olduğu, hangi yüz değiştirme algoritmalarının kullanıldığı ve videoların çekim koşulları
+                                gibi bilgiler.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-sm-6">
+                <h5>Deepfake Detection Challenge Veri Setinin Özellikleri:</h5>
+                <table class="table table-sm" style="height: 300px;">
+                    <tbody>
+                        <tr>
+                            <td class="table-info">Geniş Kapsamlı</td>
+                            <td class="table-info">DFDC veri seti, binlerce video içerir ve geniş bir veri yelpazesi
+                                sunar. Bu, modelin farklı koşullarda nasıl performans gösterdiğini değerlendirmek için
+                                önemlidir.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Çeşitlilik</td>
+                            <td class="table-info">Veri seti, farklı sahtecilik tekniklerini ve senaryolarını içerir.
+                                Bu, modelin sadece belirli bir sahtecilik türüne değil, genel sahtecilik tespitine
+                                yönelik eğitim almasını sağlar.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Gerçekçi Senaryolar</td>
+                            <td class="table-info">DFDC, günlük yaşamda karşılaşılabilecek gerçekçi sahte videolar
+                                içerir. Bu, modelin pratikteki etkinliğini artırır.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-info">Meta Verilerle Zenginleştirilmiş</td>
+                            <td class="table-info">Her video için sağlanan ek bilgiler, modelin performansını artırmak
+                                için veri önişleme ve analiz süreçlerinde kullanılabilir.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>TensorFlow Nedir?</h3>
+                <h4>TensorFlow, matematiksel hesaplamaları ve özellikle makine öğrenimi ve derin öğrenme algoritmalarını
+                    verimli bir şekilde gerçekleştirmek için tasarlanmış bir kütüphanedir. İsminden de anlaşılacağı
+                    gibi, TensorFlow, tensör adı verilen çok boyutlu diziler üzerinde işlemler gerçekleştirir ve bu
+                    işlemleri bir hesaplama grafiği (computation graph) kullanarak optimize eder.</h4>
+            </div>
+            <div class="col-sm-4">
+                <img class="navbar-logo" src="{{ url_for('static', filename='images/TensorFlow.png') }}" alt="Logo">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="navbar-logo content-image" src="{{ url_for('static', filename='images/veriSayisi.png') }}"
+                    alt="Logo">
+            </div>
+
+            <div class="col-sm-8">
+                <h2>
+                    Veri Analizi
+                </h2>
+                <h4>
+                    Veri analistliği, ham verilerin temizlenmesi ve uygun hale getirilmesi sürecini içerir. Eksik,
+                    hatalı veya tutarsız verileri tespit edip düzelterek, analiz ve modelleme sürecinde kullanılacak
+                    verilerin kalitesini artırdım. Bu, doğru ve güvenilir sonuçlar elde etmem için kritik bir adımdı.
+                </h4>
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Görüntülerden Özellik Vektörlerinin Çıkarılması</h3>
+                <h4>Bu fonksiyon, InceptionV3 modelini kullanarak görüntülerden özellikleri çıkarmak için bir model
+                    oluşturur. Bu model, genellikle bir sınıflandırıcı veya başka bir modelin giriş verisi olarak
+                    kullanılacak özellik vektörlerini elde etmek için kullanılır.Oluşturulan model, genellikle bir
+                    görüntü sınıflandırma modeli veya başka bir makine öğrenimi modeline özellik vektörleri sağlamak
+                    için kullanılır. Örneğin, çıkarılan özellikler, bir sınıflandırıcıya girdi olarak verilebilir.</h4>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <img class="navbar-logo" src="{{ url_for('static', filename='images/inceptionv3.png') }}" alt="Logo">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <br>
+                <img class="navbar-logo content-image" src="{{ url_for('static', filename='images/veriAyırma.png') }}"
+                    alt="Logo">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                    Veriyi Eğitim ve Test Setlerine Ayırmanın Projemdeki Önemi
+                </h2>
+                <h4>
+                    Veri setini eğitim ve test setlerine ayırmak, model geliştirme sürecinde kritik bir adımdır. Bu
+                    adım, modelin performansını doğru bir şekilde değerlendirmek, veri dağılımını korumak, rastgeleliği
+                    ve tekrarlanabilirliği sağlamak ve yeterli miktarda veriyle çalışmak için gereklidir. Bu sayede,
+                    projemde geliştirdiğim derin öğrenme modelinin güvenilir ve genellenebilir sonuçlar üretmesini
+                    sağladım.
+                </h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>GRU (Gated Recurrent Unit) Katmanı Nedir?</h3>
+                <h4>Gated Recurrent Unit (GRU) katmanı, sıralı verileri işlemek ve uzun dönemli bağımlılıkları öğrenmek
+                    için kullanılan bir tür tekrarlayan sinir ağı (RNN) katmanıdır. GRU, özellikle uzun sekanslı
+                    verilerde bilgi kaybını ve gradyan yok olma problemlerini azaltmak için geliştirilmiştir. Bu katman,
+                    daha popüler bir diğer RNN türü olan LSTM'ye (Long Short-Term Memory) benzer, ancak daha basit bir
+                    yapıya sahiptir.</h4>
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <img class="navbar-logo" src="{{ url_for('static', filename='images/GRULayer.png') }}" alt="Logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <br>
+                <img class="navbar-logo content-image" src="{{ url_for('static', filename='images/Egitim.png') }}"
+                    alt="Logo">
+            </div>
+            <div class="col-sm-8">
+                <h2>
+                    Eğitim Süreci
+                </h2>
+                <h4>
+                    Bu eğitim süreci sonunda, modelim videoların gerçek mi yoksa sahte mi olduğunu belirleme konusunda
+                    yüksek performans gösterdi. Model checkpoint kullanarak, en iyi performansa sahip ağırlıkları
+                    kaydedip daha sonra kullanmak üzere sakladım. Belirli epoch ve batch boyutu parametreleriyle modelin
+                    öğrenme sürecini optimize ettim ve doğrulama verisi üzerindeki performansını sürekli olarak izledim.
+                </h4>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>
+{% endblock %}

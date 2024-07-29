@@ -1,0 +1,40 @@
+{% extends 'mainPage.html' %}
+{% block content %}
+<div class="homepage-div" style = "margin-bottom: 50px;">
+    <div class="container">
+        <br>
+        <h1>
+            Nasıl Çalışır ?
+        </h1>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+
+                    <img src="{{ url_for('static', filename='images/homepageView.png') }}" alt="Lights"
+                        style="width:100%">
+                    <h3><span class="images-description">Videoyu Yüklemek için Sayfadaki Butona Tıkla</span></h3>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    
+                        <img src="{{ url_for('static', filename='images/uploadFilepage.png') }}" alt="Nature"
+                            style="width:100%">
+                            <h3><span class="images-description">Yüklemek İstediğin Videoyu Seç</span></h3>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                        <img src="{{ url_for('static', filename='images/resultView.png') }}" alt="Fjords"
+                            style="width:100%">
+                            <h3><span class="images-description">Sonucunu Gör</span></h3>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+    
+    {% endblock %}

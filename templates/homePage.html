@@ -1,0 +1,153 @@
+{% extends 'mainPage.html' %}
+{% block content %}
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title" style="text-align: center !important; color: aliceblue;">Lütfen Bekleyiniz</h3>
+        <br><br>
+        <div id="modal-cont">
+            <p style="color: aliceblue;">Bu Işlem Biraz Sürebilir.......</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="homepage-div">
+    <div class="container">
+        <br>
+        <h1>
+            Videonuzu Yükleyin
+        </h1>
+        <h4>
+            Web sitemize hoş geldiniz! Bu platform, kullanıcıların videolarını yükleyerek, yapay zeka modelleri ile
+            gerçek mi yoksa sahte (montaj) olup olmadığını tespit edebileceği bir hizmet sunmaktadır. Aşağıdaki adımları
+            takip ederek videonuzu kolayca yükleyebilir ve analiz sonuçlarını hızlı bir şekilde alabilirsiniz.
+        </h4>
+        <h3>
+            Nasıl Çalışır?
+        </h3>
+        <h4>
+            Videonuzu Yükleyin: Yükleme alanına videonuzu sürükleyip bırakın veya dosya seçme butonunu kullanarak
+            videonuzu seçin.
+            Analiz Başlasın: Yüklediğiniz video, gelişmiş yapay zeka modelimiz tarafından analiz edilecektir.
+            Sonuçları Görün: Analiz tamamlandığında, videonuzun gerçek mi yoksa sahte (montaj) olup olmadığına dair bir
+            rapor sunulacaktır.
+
+        </h4>
+        <h3>
+            Neden Bu Hizmeti Kullanmalısınız?
+        </h3>
+        <h4>
+            Güvenlik ve Güvenilirlik: Yapay zeka modelimiz, videonuzun orijinalliğini yüksek doğruluk oranıyla tespit
+            eder.
+            Hızlı Sonuçlar: Video analiz işlemi, gelişmiş algoritmalar sayesinde kısa sürede tamamlanır.
+            Kullanıcı Dostu: Basit ve anlaşılır yükleme süreci ile videonuzu kolayca analiz ettirebilirsiniz.
+        </h4>
+        <br>
+        <div class="d-flex justify-content-center upload-video-div container">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label style="text-align: center; color: brown;">Videonuz MP4 Formatında Olmalıdır.</label>
+                <br>
+                <label class="video-upload-button btn btn-info" for="inputField">Videonuzu Yüklemek için
+                    Tıklayın</label>
+                <input type="file" id="inputField" style="display:none" name="file">
+                <input type="submit" id="sub-btn" style="display: none;">
+            </form>
+
+        </div>
+
+        <br>
+        <h4 style="color:red">
+
+            Önemli Not:
+            Yüklediğiniz videolar, yalnızca analiz amacıyla kullanılacak olup, gizliliğiniz ve güvenliğiniz bizim için
+            önceliklidir. Tüm verileriniz, en yüksek güvenlik standartlarına uygun olarak korunmaktadır. Ancak, yapay
+            zeka algoritmamız %100 doğruluk garantisi veremez ve analiz sonuçları kesin olmayabilir. Bu nedenle, analiz
+            sonuçlarını değerlendirirken ek bilgi ve profesyonel görüşlerle desteklemenizi öneririz.
+
+        </h4>
+        <br />
+
+
+    </div>
+</div>
+<script>
+
+    const fileUploadButton = document.getElementById("inputField");
+    var modal = document.getElementById('myModal');
+    var close_btn = document.getElementsByClassName("close")[0];
+    var title = document.getElementById("modal-title");
+    var content = document.getElementById("modal-cont");
+
+    close_btn.onclick = function () {
+        modal.style.display = "none";
+        title.innerText = "Lütfen Bekleyiniz";
+        content.innerHTML = `
+        <p style="color: aliceblue;">Bu Işlem Biraz Sürebilir.......</p>
+        `;
+    }
+
+    fileUploadButton.addEventListener("change", function (e) {
+        const selectedFile = e.target.files[0];
+
+        if (selectedFile && selectedFile.name.slice(-3) === "mp4") {
+            modal.style.display = "block";
+            close_btn.style.display = "none";
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            console.log(selectedFile)
+            var result_color = "";
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Sunucu yanıtı:', data);
+                    if (data == "FAKE") {
+                        result_color = "red";
+                    } else {
+                        result_color = "green";
+                    }
+                    close_btn.style.display = "block";
+                    title.innerText = "Sonuçlar";
+                    content.innerHTML = `
+                    <div id="video-container">
+                        <video width="500" controls>
+                            <source src="static/uploads/${selectedFile.name}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <br />
+                    
+                    <div id="center-container">
+                        <div>
+                            <h3 style="margin-top:1%;width:230px;color:white;display: inline;">Tahmin Sonucu: </h3>
+                            <h2 style="margin: 0;color:${result_color};display: inline;">${data}</h2>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <p style = "color:red;">
+                            Çıkan sonuç %100 doğru değildir ve bu sonuç kesinlikle bir kanıt niteliği taşımaz. Sonuçlar sadece tahmini niteliktedir ve doğruluğu garanti edilmemektedir. Bu nedenle, sonuçları değerlendirirken dikkatli olunmalı ve ek doğrulama yöntemleri kullanılmalıdır. Bu uyarı dikkate alınarak, ortaya çıkan sonuçlar yalnızca bilgilendirme amaçlı kullanılmalıdır ve yasal ya da resmi bir kanıt olarak sunulmamalıdır. Herhangi bir karar alınırken, ek uzman görüşleri ve doğrulama adımlarının atılması önemlidir.    
+                        </p>
+                    </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                    alert('Dosya yükleme sırasında bir hata oluştu.');
+                })
+                .finally(() => {
+                    fileUploadButton.value = '';
+                });
+        } else {
+            console.log("Dosya seçilmedi veya dosya türü mp4 değil.");
+            fileUploadButton.value = '';
+        }
+    });
+
+</script>
+{% endblock %}

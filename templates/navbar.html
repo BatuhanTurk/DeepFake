@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm bg-cyan justify-content-center">
+    <div class="container-fluid">
+    <ul class="navbar-nav">
+        <a class="nav-link active" href="{{ url_for('homePage') }}">Hemen Dene</a>
+    </ul>
+</div>
+    <img class = "navbar-logo"  src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+    <div class="container-fluid">
+        <ul class="navbar-nav nabar-right-list">
+            <a class="nav-link active" href="{{ url_for('howworkingPage') }}">Nasıl Çalışır</a>
+            <a class="nav-link active" href="{{ url_for('howdoPage')}}">Nasıl Yapıldı</a>
+        </ul>
+    </div>
+</nav>
